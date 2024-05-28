@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auswahlfenster</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitte treffen Sie eine Auswahl</h1>
+    
+    <div id="frage1">
+        <label>Geschlecht:</label><br>
+        <button onclick="auswahlGeschlecht('mann')">Mann</button>
+        <button onclick="auswahlGeschlecht('frau')">Frau</button>
+    </div>
+
+    <div id="frage2" class="hidden">
+        <label>Beziehungsstatus:</label><br>
+        <button onclick="auswahlStatus('single')">Single</button>
+        <button onclick="auswahlStatus('vergeben')">Vergeben</button>
+    </div>
+
+    <div id="ergebnis" class="hidden">
+        <p>Hier ist der Platzhalter für meine Nummer: <strong>123-456-7890</strong></p>
+    </div>
+
+    <script>
+        function auswahlGeschlecht(geschlecht) {
+            if (geschlecht === 'mann') {
+                alert("Danke für Ihre Auswahl. Diese Seite kann jetzt nicht mehr verwendet werden.");
+                document.body.innerHTML = "<h1>Sie haben 'Mann' gewählt. Diese Seite ist jetzt gesperrt.</h1>";
+            } else if (geschlecht === 'frau') {
+                document.getElementById('frage1').classList.add('hidden');
+                document.getElementById('frage2').classList.remove('hidden');
+            }
+        }
+
+        function auswahlStatus(status) {
+            if (status === 'single') {
+                document.getElementById('frage2').classList.add('hidden');
+                document.getElementById('ergebnis').classList.remove('hidden');
+            } else if (status === 'vergeben') {
+                alert("Danke für Ihre Auswahl. Diese Seite kann jetzt nicht mehr verwendet werden.");
+                document.body.innerHTML = "<h1>Sie haben 'vergeben' gewählt. Diese Seite ist jetzt gesperrt.</h1>";
+            }
+        }
+    </script>
+</body>
+</html>
+
